@@ -27,7 +27,7 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_PASSWORD: ygtdb2016
+      - "POSTGRES_PASSWORD:ygtdb2016"
       - POSTGRES_USER: sentry_user
       - POSTGRES_DB: sentry_prod
       - PGDATA: /var/lib/postgresql/data
