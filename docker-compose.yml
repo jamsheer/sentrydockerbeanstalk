@@ -14,7 +14,7 @@ services:
       SENTRY_POSTGRES_HOST: postgres
       SENTRY_EMAIL_HOST: smtp
       SENTRY_SECRET_KEY: '1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t'
-      SENTRY_DB_NAME: sentry_prod
+      SENTRY_DB_NAME: postgres
       SENTRY_DB_USER: postgres
       SENTRY_DB_PASSWORD: '6oWhjZyHBi4'
       EMAIL_HOST: smtp.gmail.com
@@ -36,7 +36,7 @@ services:
       - "5432:5432"
     environment:
       - "POSTGRES_PASSWORD=6oWhjZyHBi4"
-      - "POSTGRES_DB=sentry_prod"
+      - "POSTGRES_DB=postgres"
       - "PGDATA=/var/lib/postgresql/data"
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
@@ -45,7 +45,7 @@ services:
     extends: base
     environment:
       - "SENTRY_SECRET_KEY=1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t"
-      - "SENTRY_DB_NAME=sentry_prod"
+      - "SENTRY_DB_NAME=postgres"
       - "SENTRY_DB_USER=postgres"
       - "SENTRY_DB_PASSWORD=6oWhjZyHBi4"
       - "EMAIL_HOST=smtp.gmail.com"
@@ -64,7 +64,7 @@ services:
     command: run cron
     environment:
       - "SENTRY_SECRET_KEY=1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t"
-      - "SENTRY_DB_NAME=sentry_prod"
+      - "SENTRY_DB_NAME=postgres"
       - "SENTRY_DB_USER=postgres"
       - "SENTRY_DB_PASSWORD=6oWhjZyHBi4"
       - "EMAIL_HOST=smtp.gmail.com"
@@ -81,7 +81,7 @@ services:
     command: run worker
     environment:
       - "SENTRY_SECRET_KEY=1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t"
-      - "SENTRY_DB_NAME=sentry_prod"
+      - "SENTRY_DB_NAME=postgres"
       - "SENTRY_DB_USER=postgres"
       - "SENTRY_DB_PASSWORD=6oWhjZyHBi4"
       - "EMAIL_HOST=smtp.gmail.com"
