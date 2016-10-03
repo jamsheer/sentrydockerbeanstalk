@@ -16,9 +16,6 @@ services:
     volumes:
       - ./data/sentry:/var/lib/sentry/files
 
-  smtp:
-    image: tianon/exim4
-
   memcached:
     image: memcached:1.4
 
@@ -27,6 +24,13 @@ services:
 
   postgres:
     image: postgres:9.5
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD: 6oWhjZyHBi4$
+      - POSTGRES_USER: sentry_user
+      - POSTGRES_DB: sentry_prod
+      - PGDATA: /var/lib/postgresql/data
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
 
@@ -36,9 +40,8 @@ services:
       - redis
       - postgres
       - memcached
-      - smtp
     ports:
-      - '9000:9000'
+      - '80:9000'
 
   cron:
     extends: base
@@ -47,7 +50,6 @@ services:
       - redis
       - postgres
       - memcached
-      - smtp
 
   worker:
     extends: base
@@ -56,4 +58,4 @@ services:
       - redis
       - postgres
       - memcached
-      - smtp
+
