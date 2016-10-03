@@ -35,10 +35,10 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - "POSTGRES_PASSWORD:6oWhjZyHBi4"
-      - "POSTGRES_USER:sentry_user"
-      - "POSTGRES_DB:sentry_prod"
-      - "PGDATA:/var/lib/postgresql/data"
+      - "POSTGRES_PASSWORD=6oWhjZyHBi4"
+      - "POSTGRES_USER=sentry_user"
+      - "POSTGRES_DB=sentry_prod"
+      - "PGDATA=/var/lib/postgresql/data"
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
 
