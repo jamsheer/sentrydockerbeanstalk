@@ -15,7 +15,7 @@ services:
       SENTRY_EMAIL_HOST: smtp
       SENTRY_SECRET_KEY: '1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t'
       SENTRY_DB_NAME: sentry_prod
-      SENTRY_DB_USER: sentry_user
+      SENTRY_DB_USER: postgres
       SENTRY_DB_PASSWORD: '6oWhjZyHBi4'
       EMAIL_HOST: smtp.gmail.com
       EMAIL_HOST_PASSWORD: 'ezqsfylfzksfgyfq'
@@ -36,7 +36,6 @@ services:
       - "5432:5432"
     environment:
       - "POSTGRES_PASSWORD=6oWhjZyHBi4"
-      - "POSTGRES_USER=sentry_user"
       - "POSTGRES_DB=sentry_prod"
       - "PGDATA=/var/lib/postgresql/data"
     volumes:
@@ -47,7 +46,7 @@ services:
     environment:
       - "SENTRY_SECRET_KEY=1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t"
       - "SENTRY_DB_NAME=sentry_prod"
-      - "SENTRY_DB_USER=sentry_user"
+      - "SENTRY_DB_USER=postgres"
       - "SENTRY_DB_PASSWORD=6oWhjZyHBi4"
       - "EMAIL_HOST=smtp.gmail.com"
       - "EMAIL_HOST_PASSWORD=ezqsfylfzksfgyfq"
@@ -66,7 +65,7 @@ services:
     environment:
       - "SENTRY_SECRET_KEY=1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t"
       - "SENTRY_DB_NAME=sentry_prod"
-      - "SENTRY_DB_USER=sentry_user"
+      - "SENTRY_DB_USER=postgres"
       - "SENTRY_DB_PASSWORD=6oWhjZyHBi4"
       - "EMAIL_HOST=smtp.gmail.com"
       - "EMAIL_HOST_PASSWORD=ezqsfylfzksfgyfq"
@@ -83,7 +82,7 @@ services:
     environment:
       - "SENTRY_SECRET_KEY=1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t"
       - "SENTRY_DB_NAME=sentry_prod"
-      - "SENTRY_DB_USER=sentry_user"
+      - "SENTRY_DB_USER=postgres"
       - "SENTRY_DB_PASSWORD=6oWhjZyHBi4"
       - "EMAIL_HOST=smtp.gmail.com"
       - "EMAIL_HOST_PASSWORD=ezqsfylfzksfgyfq"
