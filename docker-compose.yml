@@ -22,6 +22,9 @@ services:
       - ./data/sentry:/var/lib/sentry/files
   smtp:
     image: tianon/exim4
+    environment:
+      GMAIL_USER: ${EMAIL_HOST_USER}
+      GMAIL_PASSWORD: ${EMAIL_HOST_PASSWORD}
 
   memcached:
     image: memcached:1.4
