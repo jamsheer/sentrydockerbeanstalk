@@ -12,7 +12,7 @@ services:
       SENTRY_MEMCACHED_HOST: memcached
       SENTRY_REDIS_HOST: redis
       SENTRY_POSTGRES_HOST: ${SENTRY_POSTGRES_HOST}
-      SENTRY_EMAIL_HOST: smtp
+      SENTRY_EMAIL_HOST: smtp.gmail.com
       SENTRY_SECRET_KEY: '1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t'
       SENTRY_DB_NAME: sentry_prod
       SENTRY_DB_USER: sentry_user
