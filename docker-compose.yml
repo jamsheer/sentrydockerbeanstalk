@@ -12,14 +12,14 @@ services:
       SENTRY_MEMCACHED_HOST: memcached
       SENTRY_REDIS_HOST: redis
       SENTRY_POSTGRES_HOST: ${SENTRY_POSTGRES_HOST}
-      SENTRY_EMAIL_HOST: smtp.gmail.com
-      SENTRY_SECRET_KEY: '1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t'
+      SENTRY_EMAIL_HOST: ${SENTRY_EMAIL_HOST}
+      SENTRY_SECRET_KEY: ${SENTRY_SECRET_KEY}
       SENTRY_DB_NAME: sentry_prod
       SENTRY_DB_USER: sentry_user
-      SENTRY_DB_PASSWORD: '6oWhjZyHBi4'
-      EMAIL_HOST: smtp.gmail.com
-      EMAIL_HOST_PASSWORD: 'ezqsfylfzksfgyfq'
-      EMAIL_HOST_USER: 'alerts@yougotagift.com'
+      SENTRY_DB_PASSWORD: ${SENTRY_DB_PASSWORD}
+      EMAIL_HOST: ${EMAIL_HOST}
+      EMAIL_HOST_PASSWORD:  ${EMAIL_HOST_PASSWORD}
+      EMAIL_HOST_USER: ${EMAIL_HOST_USER}
       EMAIL_USE_TLS: 'True'
     volumes:
       - ./data/sentry:/var/lib/sentry/files
@@ -32,15 +32,6 @@ services:
 
   web:
     extends: base
-    environment:
-      - "SENTRY_SECRET_KEY=1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t"
-      - "SENTRY_DB_NAME=sentry_prod"
-      - "SENTRY_DB_USER=sentry_user"
-      - "SENTRY_DB_PASSWORD=6oWhjZyHBi4"
-      - "EMAIL_HOST=smtp.gmail.com"
-      - "EMAIL_HOST_PASSWORD=ezqsfylfzksfgyfq"
-      - "EMAIL_HOST_USER=alerts@yougotagift.com"
-      - "EMAIL_USE_TLS=True"
     links:
       - redis
       - memcached
@@ -50,15 +41,6 @@ services:
   cron:
     extends: base
     command: run cron
-    environment:
-      - "SENTRY_SECRET_KEY=1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t"
-      - "SENTRY_DB_NAME=sentry_prod"
-      - "SENTRY_DB_USER=sentry_user"
-      - "SENTRY_DB_PASSWORD=6oWhjZyHBi4"
-      - "EMAIL_HOST=smtp.gmail.com"
-      - "EMAIL_HOST_PASSWORD=ezqsfylfzksfgyfq"
-      - "EMAIL_HOST_USER=alerts@yougotagift.com"
-      - "EMAIL_USE_TLS=True"
     links:
       - redis
       - memcached
@@ -66,15 +48,6 @@ services:
   worker:
     extends: base
     command: run worker
-    environment:
-      - "SENTRY_SECRET_KEY=1u2aq79qp6kni07tf&mk*wo!nmil9%^85m_4cmz5ziha=8&)4t"
-      - "SENTRY_DB_NAME=sentry_prod"
-      - "SENTRY_DB_USER=sentry_user"
-      - "SENTRY_DB_PASSWORD=6oWhjZyHBi4"
-      - "EMAIL_HOST=smtp.gmail.com"
-      - "EMAIL_HOST_PASSWORD=ezqsfylfzksfgyfq"
-      - "EMAIL_HOST_USER=alerts@yougotagift.com"
-      - "EMAIL_USE_TLS=True"
     links:
       - redis
       - memcached
