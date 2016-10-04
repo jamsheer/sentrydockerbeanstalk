@@ -12,17 +12,15 @@ services:
       SENTRY_MEMCACHED_HOST: memcached
       SENTRY_REDIS_HOST: redis
       SENTRY_POSTGRES_HOST: ${SENTRY_POSTGRES_HOST}
-      SENTRY_EMAIL_HOST: ${SENTRY_EMAIL_HOST}
+      SENTRY_EMAIL_HOST: smtp
       SENTRY_SECRET_KEY: ${SENTRY_SECRET_KEY}
       SENTRY_DB_NAME: sentry_prod
       SENTRY_DB_USER: sentry_user
       SENTRY_DB_PASSWORD: ${SENTRY_DB_PASSWORD}
-      EMAIL_HOST: ${EMAIL_HOST}
-      EMAIL_HOST_PASSWORD:  ${EMAIL_HOST_PASSWORD}
-      EMAIL_HOST_USER: ${EMAIL_HOST_USER}
-      EMAIL_USE_TLS: 'True'
     volumes:
       - ./data/sentry:/var/lib/sentry/files
+  smtp:
+    image: tianon/exim4
 
   memcached:
     image: memcached:1.4
@@ -35,6 +33,7 @@ services:
     links:
       - redis
       - memcached
+      - smtp
     ports:
       - '80:9000'
 
@@ -44,6 +43,7 @@ services:
     links:
       - redis
       - memcached
+      - smtp
 
   worker:
     extends: base
@@ -51,4 +51,5 @@ services:
     links:
       - redis
       - memcached
+      - smtp
 
