@@ -259,6 +259,10 @@ else:
 
 # The email address to send on behalf of
 SENTRY_OPTIONS['mail.from'] = env('SENTRY_SERVER_EMAIL') or 'root@localhost'
+############################
+# General Sentry options ##
+############################
+SENTRY_OPTIONS['system.url-prefix'] = env('SENTRY_URL_PREFIX') or ''
 
 # If you're using mailgun for inbound mail, set your API key and configure a
 # route to forward to /api/hooks/mailgun/inbound/
