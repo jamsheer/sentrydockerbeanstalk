@@ -44,4 +44,4 @@
 #       0:
 #         host: 127.0.0.1
 #         port: 6379
-system.url-prefix: 'http://ericallman.yougotagift.com'
+system.url-prefix: 'http://sentry.yougotagift.com'
